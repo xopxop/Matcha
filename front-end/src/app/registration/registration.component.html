@@ -1,0 +1,150 @@
+<form [formGroup]="form" class="registration-form">
+  <h2>Sign up</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Email Address</mat-label>
+    <input
+      type="email"
+      matInput
+      formControlName="emailAddress"
+      (focus)="isEmailAddressFieldFocused = true"
+      (blur)="isEmailAddressFieldFocused = false"
+    />
+
+    <mat-icon
+      *ngIf="!form.get('emailAddress')?.errors && !isEmailAddressFieldFocused"
+      matSuffix
+      class="valid"
+      >check_circle_outline</mat-icon
+    >
+    <mat-icon
+      *ngIf="
+        form.get('emailAddress')?.errors &&
+        form.get('emailAddress')?.touched &&
+        !isEmailAddressFieldFocused
+      "
+      matSuffix
+      class="error"
+      [matTooltip]="emailErrorTooltip"
+      >error_outline</mat-icon
+    >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="userName"
+      (focus)="isUserNameFieldFocused = true"
+      (blur)="isUserNameFieldFocused = false"
+    />
+    <mat-icon
+      *ngIf="!form.get('userName')?.errors && !isUserNameFieldFocused"
+      matSuffix
+      class="valid"
+      >check_circle_outline</mat-icon
+    >
+    <mat-icon
+      *ngIf="
+        form.get('userName')?.errors &&
+        form.get('userName')?.touched &&
+        !isUserNameFieldFocused
+      "
+      matSuffix
+      class="error"
+      [matTooltip]="nameErrorTooltip"
+      >error_outline</mat-icon
+    >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="firstName"
+      (focus)="isFirstNameFieldFocused = true"
+      (blur)="isFirstNameFieldFocused = false"
+    />
+    <mat-icon
+      *ngIf="!form.get('firstName')?.errors && !isFirstNameFieldFocused"
+      matSuffix
+      class="valid"
+      >check_circle_outline</mat-icon
+    >
+    <mat-icon
+      *ngIf="
+        form.get('firstName')?.errors &&
+        form.get('firstName')?.touched &&
+        !isFirstNameFieldFocused
+      "
+      matSuffix
+      class="error"
+      [matTooltip]="nameErrorTooltip"
+      >error_outline</mat-icon
+    >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="lastName"
+      (focus)="isLastNameFieldFocused = true"
+      (blur)="isLastNameFieldFocused = false"
+    />
+    <mat-icon
+      *ngIf="!form.get('lastName')?.errors && !isLastNameFieldFocused"
+      matSuffix
+      class="valid"
+      >check_circle_outline</mat-icon
+    >
+    <mat-icon
+      *ngIf="
+        form.get('lastName')?.errors &&
+        form.get('lastName')?.touched &&
+        !isLastNameFieldFocused
+      "
+      matSuffix
+      class="error"
+      [matTooltip]="nameErrorTooltip"
+      >error_outline</mat-icon
+    >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input
+      type="password"
+      matInput
+      formControlName="passWord"
+      (focus)="isPassWordFieldFocused = true"
+      (blur)="isPassWordFieldFocused = false"
+    />
+    <mat-icon
+      *ngIf="!form.get('passWord')?.errors && !isPassWordFieldFocused"
+      matSuffix
+      class="valid"
+      >check_circle_outline</mat-icon
+    >
+    <mat-icon
+      *ngIf="
+        form.get('passWord')?.errors &&
+        form.get('passWord')?.touched &&
+        !isPassWordFieldFocused
+      "
+      matSuffix
+      class="error"
+      [matTooltip]="passWordErrorTooltip"
+      >error_outline</mat-icon
+    >
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!isValidForm"
+    matTooltip="Error"
+    (click)="onSubmit()"
+    [matTooltipDisabled]="isValidForm"
+  >
+    Show
+  </button>
+</form>
+<p>Already have an account? <a href="#">Login</a></p>
