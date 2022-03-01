@@ -1,0 +1,12 @@
+<form [formGroup]="loginForm" class="login-form">
+  <h2>Log In</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input type="text" matInput formControlName="userName">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput formControlName="passWord">
+  </mat-form-field>
+  <button mat-raised-button (click)="onSubmit()">Log In</button>
+</form>
