@@ -40,8 +40,21 @@ mongoose.connect(process.env.MONGO_URI);
 
 app.post('/authenticate', (req, res) => {
   const { user, password } = req.body;
-  console.log(req.body);
-  res.send({ok: "ok"})
+  User.findOne({ user, password}, (err, data) => {
+    if (data) {
+      res.status(200).send({
+        id: data._id,
+        username: data.username,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        token: 'fakeToken'
+      });
+    } else {
+      res.status(404).send({
+        error: 'user or password is incorrect!s'
+      });
+    }
+  });
 })
 
 app.post('/register', (req, res) => {

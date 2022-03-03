@@ -20,16 +20,13 @@ export class AccountService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<User>('http://localhost:3000/authenticate', { username, password }).subscribe(
-      res => console.log(res)
+    return this.http.post<User>('http://localhost:3000/authenticate', { username, password }).pipe(
+      map(user => {
+        localStorage.setItem('user', JSON.stringify(user));
+        this.userSubject.next(user);
+        return user;
+      })
     );
-        // .pipe(
-        //   map((user: User) => {
-        //     // store user details and jwt token in local storage to keep user logged in between page refreshes
-        //     localStorage.setItem('user', JSON.stringify(user));
-        //     this.userSubject.next(user);
-        //     return user;
-        // }));
   }
 
   logout() {

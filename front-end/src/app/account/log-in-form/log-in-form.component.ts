@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from 'src/app/service/account.service';
 
 @Component({
@@ -9,14 +9,19 @@ import { AccountService } from 'src/app/service/account.service';
   styleUrls: ['./log-in-form.component.scss']
 })
 export class LogInFormComponent implements OnInit {
+  returnUrl: string;
 
   constructor(
     private readonly accountService: AccountService,
-  ) { }
+    private readonly route: ActivatedRoute,
+    private readonly router: Router
+  ) {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  }
 
   loginForm: FormGroup = new FormGroup({
-    userName: new FormControl(),
-    passWord: new FormControl()
+    username: new FormControl(),
+    password: new FormControl()
   });
 
   ngOnInit(): void {
@@ -24,10 +29,19 @@ export class LogInFormComponent implements OnInit {
 
   onSubmit() {
     const logInAccount: LogInAccount = {
-      userName: this.loginForm.get('userName')?.value,
-      password: this.loginForm.get('passWord')?.value
+      userName: this.loginForm.get('username')?.value,
+      password: this.loginForm.get('password')?.value
     };
-    this.accountService.login(logInAccount.userName, logInAccount.password);
+    this.accountService
+      .login(logInAccount.userName, logInAccount.password)
+      .subscribe({
+        next: (data) => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
   }
 }
 
