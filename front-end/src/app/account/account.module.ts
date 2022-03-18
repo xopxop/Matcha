@@ -28,7 +28,5 @@ import { RegistrationComponent } from "./registration/registration.component";
     MatTooltipModule,
     AccountRoutingModule
   ],
-  exports: [],
-  providers: []
 })
 export class AccountModule {}
