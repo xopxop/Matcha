@@ -1,28 +1,82 @@
-<div class="questionaire">
-  <div class="question">
-    <div class="question__heading">
-      <div class="question__q">
-        <div class="question__answers">
-          <div class="answer"></div>
-        </div>
-      </div>
+<mat-stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Step 1</ng-template>
+      <ng-template matStepContent>
+        <p>I am a...</p>
+        <mat-button-toggle-group formControlName="gender" [vertical]="true">
+          <mat-button-toggle value="1">Woman</mat-button-toggle>
+          <mat-button-toggle value="2">Man</mat-button-toggle>
+          <mat-button-toggle value="3">Agender</mat-button-toggle>
+          <mat-button-toggle value="4">Androgynous</mat-button-toggle>
+          <mat-button-toggle value="5">Bigender</mat-button-toggle>
+          <mat-button-toggle value="6">Cis Man</mat-button-toggle>
+          <mat-button-toggle value="7">Cis Woman</mat-button-toggle>
+          <mat-button-toggle value="8">Genderfluid</mat-button-toggle>
+        </mat-button-toggle-group>
+      </ng-template>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Step 2</ng-template>
+      <ng-template matStepContent>
+        <p>I want to date...</p>
+        <mat-button-toggle-group formControlName="sexualOrientation" [vertical]="true">
+          <mat-button-toggle value="1">Woman</mat-button-toggle>
+          <mat-button-toggle value="2">Man</mat-button-toggle>
+          <mat-button-toggle value="3">Agender</mat-button-toggle>
+          <mat-button-toggle value="4">Androgynous</mat-button-toggle>
+          <mat-button-toggle value="5">Bigender</mat-button-toggle>
+          <mat-button-toggle value="6">Cis Man</mat-button-toggle>
+          <mat-button-toggle value="7">Cis Woman</mat-button-toggle>
+          <mat-button-toggle value="8">Genderfluid</mat-button-toggle>
+        </mat-button-toggle-group>
+      </ng-template>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Step 3</ng-template>
+      <ng-template matStepContent>
+        <p>Tell us about yourself?</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Biography</mat-label>
+          <textarea matInput formControlName="biography"></textarea>
+        </mat-form-field>
+      </ng-template>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="forthFormGroup">
+    <form [formGroup]="forthFormGroup">
+      <ng-template matStepLabel>Step 4</ng-template>
+      <ng-template matStepContent>
+        <p>List of interests?</p>
+        <mat-form-field appearance="fill">
+          <mat-chip-list #chipList>
+            <mat-chip *ngFor="let interest of interests" (removed)="onRemove(interest)">
+              {{interest.name}}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input
+              placeholder="More..."
+              [matChipInputFor]="chipList"
+              (matChipInputTokenEnd)="onAdd($event)"
+            >
+          </mat-chip-list>
+        </mat-form-field>
+      </ng-template>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <!-- <button mat-button matStepperPrevious>Back</button> -->
+      <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
     </div>
-  </div>
-  <div class="actions">
-    <button class="previous">Back</button>
-    <button class="next">Next</button>
-  </div>
-  <div class="progress__bar">
-    <div class="progress__bar--slider"></div>
-  </div>
-  <div class="progress_actions">
-    <div class="p-actions-left">
-      <span>Step</span>
-      <span>Out of</span>
-      <span></span>
-    </div>
-    <div class="p-actions-right"></div>
-  </div>
-</div>
+  </mat-step>
 
-<span>Here</span>
+</mat-stepper>
