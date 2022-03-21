@@ -16,3 +16,12 @@
     gap: 20px;
   }
 }
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  button {
+    min-width: 100px;
+  }
+}

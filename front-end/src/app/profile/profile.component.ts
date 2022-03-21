@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MatChipInputEvent } from "@angular/material/chips";
+import { MatStepper } from "@angular/material/stepper";
 
 @Component({
   selector: 'app-profile',
@@ -8,6 +9,16 @@ import { MatChipInputEvent } from "@angular/material/chips";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
+  @ViewChild('stepper') stepper: any;
+
+  get currentStep(): number | null {
+    if (this.stepper) {
+      console.log(this.stepper.selectedIndex);
+      return this.stepper.selectedIndex;
+    }
+    return null;
+  }
+
   constructor() {
   }
 
@@ -60,5 +71,13 @@ export class ProfileComponent {
     }
 
     event.chipInput!.clear();
+  }
+
+  goBack(stepper: MatStepper): void {
+    stepper.previous();
+  }
+
+  goForward(stepper: MatStepper): void {
+    stepper.next();
   }
 }

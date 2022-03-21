@@ -1,4 +1,4 @@
-<mat-stepper>
+<mat-stepper #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Step 1</ng-template>
@@ -72,11 +72,24 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <!-- <button mat-button matStepperPrevious>Back</button> -->
-      <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
-    </div>
+    <ng-template matStepContent>
+      <p>You are now done.</p>
+      <button mat-raised-button color="primary">Submit</button>
+    </ng-template>
   </mat-step>
 
 </mat-stepper>
+<div class="buttons-container">
+  <button
+    mat-raised-button
+    [disabled]="stepper.selectedIndex === 0"
+    color="accent"
+    (click)="goBack(stepper)"
+  >Back</button>
+  <button
+    mat-raised-button
+    [disabled]="stepper.selectedIndex === 4"
+    color="primary"
+    (click)="goForward(stepper)"
+  >Next</button>
+</div>
