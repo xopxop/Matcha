@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TestComponent } from './test.component';
 
 const imagesInputModule = () =>
-  import('./images-input/images-input.module').then((m) => m.ImagesInputModule);
+  import('../widget/images-input-widget/images-input.module').then((m) => m.ImagesInputModule);
 
 const routes: Routes = [
   {

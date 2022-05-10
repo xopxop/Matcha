@@ -109,7 +109,15 @@
     </form>
   </mat-step>
 
-  <mat-step> </mat-step>
+  <mat-step>
+    <form>
+      <ng-template matStepLabel>Step 5</ng-template>
+      <ng-template matStepContent>
+        <p>Pictures</p>
+        <images-input></images-input>
+      </ng-template>
+    </form>
+  </mat-step>
 
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>

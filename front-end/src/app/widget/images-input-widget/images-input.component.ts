@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
+  selector: 'images-input',
   templateUrl: './images-input.component.html',
   styleUrls: ['./images-input.component.scss'],
 })

@@ -12,6 +12,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ImagesInputModule } from '../widget/images-input-widget/images-input.module';
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -28,6 +29,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatIconModule,
     ProfileRoutingModule,
     MatButtonToggleModule,
+    ImagesInputModule
   ],
 })
 export class ProfileModule {}
