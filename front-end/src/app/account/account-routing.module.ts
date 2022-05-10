@@ -1,8 +1,8 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { AccountComponent } from "./account.component";
-import { LogInFormComponent } from "./log-in-form/log-in-form.component";
-import { RegistrationComponent } from "./registration/registration.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AccountComponent } from './account.component';
+import { LogInFormComponent } from './log-in-form/log-in-form.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   {
@@ -10,13 +10,13 @@ const routes: Routes = [
     component: AccountComponent,
     children: [
       { path: 'login', component: LogInFormComponent },
-      { path: 'register', component: RegistrationComponent }
-    ]
-  }
+      { path: 'register', component: RegistrationComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AccountRoutingModule {}

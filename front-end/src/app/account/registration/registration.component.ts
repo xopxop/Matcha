@@ -76,9 +76,7 @@ export class RegistrationComponent implements OnInit {
     ]),
   });
 
-  constructor(
-    private readonly accountService: AccountService
-  ) {}
+  constructor(private readonly accountService: AccountService) {}
 
   ngOnInit(): void {}
 
@@ -90,7 +88,7 @@ export class RegistrationComponent implements OnInit {
       lastName: this.form.get('lastName')?.value,
       password: this.form.get('passWord')?.value,
     };
-    this.accountService.register(user).subscribe(data => {
+    this.accountService.register(user).subscribe((data) => {
       console.log(data);
       // this.router();
     });

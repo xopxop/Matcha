@@ -1,13 +1,13 @@
-import { Component, ViewChild } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
-import { MatChipInputEvent } from "@angular/material/chips";
-import { MatStepper } from "@angular/material/stepper";
+import { Component, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { MatStepper } from '@angular/material/stepper';
 import { GenderList } from '../model/gender.enum';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
   @ViewChild('stepper') stepper: any;
@@ -22,15 +22,14 @@ export class ProfileComponent {
     return null;
   }
 
-  constructor() {
-  }
+  constructor() {}
 
   userProfileForm: FormGroup = new FormGroup({
     gender: new FormControl(),
     sexualOrientation: new FormControl(),
     biography: new FormControl(),
     listOfInterest: new FormControl(),
-    picture: new FormControl()
+    picture: new FormControl(),
   });
 
   onSubmit(): void {
@@ -38,9 +37,7 @@ export class ProfileComponent {
     // console.log(this.genderList);
   }
 
-  interests = [
-    { name: 'cat' }, { name: 'dog' }, { name: 'fish' }
-  ];
+  interests = [{ name: 'cat' }, { name: 'dog' }, { name: 'fish' }];
 
   onRemove(item: any): void {
     const index = this.interests.indexOf(item);
@@ -54,7 +51,7 @@ export class ProfileComponent {
     const value = (event.value || '').trim();
 
     if (value) {
-      this.interests.push({name: value});
+      this.interests.push({ name: value });
     }
 
     event.chipInput!.clear();

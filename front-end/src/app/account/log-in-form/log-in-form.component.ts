@@ -6,7 +6,7 @@ import { AccountService } from 'src/app/service/account.service';
 @Component({
   selector: 'app-log-in-form',
   templateUrl: './log-in-form.component.html',
-  styleUrls: ['./log-in-form.component.scss']
+  styleUrls: ['./log-in-form.component.scss'],
 })
 export class LogInFormComponent implements OnInit {
   returnUrl: string;
@@ -21,16 +21,15 @@ export class LogInFormComponent implements OnInit {
 
   loginForm: FormGroup = new FormGroup({
     username: new FormControl(),
-    password: new FormControl()
+    password: new FormControl(),
   });
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     const logInAccount: LogInAccount = {
       userName: this.loginForm.get('username')?.value,
-      password: this.loginForm.get('password')?.value
+      password: this.loginForm.get('password')?.value,
     };
     this.accountService
       .login(logInAccount.userName, logInAccount.password)
@@ -40,12 +39,12 @@ export class LogInFormComponent implements OnInit {
         },
         error: (error) => {
           console.log(error);
-        }
+        },
       });
   }
 }
 
 interface LogInAccount {
-  userName: string,
-  password: string
+  userName: string;
+  password: string;
 }

@@ -1,11 +1,10 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   templateUrl: './images-input.component.html',
-  styleUrls: [
-    './images-input.component.scss'
-  ]
-}) export class ImagesInputComponent {
+  styleUrls: ['./images-input.component.scss'],
+})
+export class ImagesInputComponent {
   @Input() readonly: boolean = false;
   @Output() valueChange = new EventEmitter<Array<Image>>();
 
@@ -13,7 +12,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 
   addImage(event: Event): void {
     const fileList: FileList = (event.target as any).files;
-    for(let i = 0; i < fileList.length; i++) {
+    for (let i = 0; i < fileList.length; i++) {
       const file = fileList.item(i);
       const reader = new FileReader();
 
@@ -34,5 +33,5 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 }
 
 class Image {
-  constructor(public content: string, public name: string) { }
+  constructor(public content: string, public name: string) {}
 }

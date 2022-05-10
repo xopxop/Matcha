@@ -1,22 +1,20 @@
-import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
-import { MatButtonModule } from "@angular/material/button";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { MatTooltipModule } from "@angular/material/tooltip";
-import { ProfileRoutingModule } from "./profile-routing.module";
-import { ProfileComponent } from "./profile.component";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { ProfileRoutingModule } from './profile-routing.module';
+import { ProfileComponent } from './profile.component';
 import { MatRadioModule } from '@angular/material/radio';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatChipsModule} from '@angular/material/chips';
-import { MatIconModule } from "@angular/material/icon";
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
-  declarations: [
-    ProfileComponent
-  ],
+  declarations: [ProfileComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -29,7 +27,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatChipsModule,
     MatIconModule,
     ProfileRoutingModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
   ],
 })
 export class ProfileModule {}

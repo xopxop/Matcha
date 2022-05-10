@@ -1,9 +1,6 @@
-<div
-  *ngFor="let image of images"
-  class="display-inline card-size card-styling"
->
+<div *ngFor="let image of images" class="display-inline card-size card-styling">
   <div>
-    <img class="image-fit" src="{{image.content}}">
+    <img class="image-fit" src="{{ image.content }}" />
   </div>
 </div>
 
@@ -16,15 +13,13 @@
     class="image-input"
     multiple
     (change)="addImage($event)"
-  >
+  />
   <button
     mat-button
     class="size-to-parent icon-color"
     matTooltip="Add"
     (click)="imageInput.click()"
   >
-    <mat-icon>
-      add_photo_alternate
-    </mat-icon>
+    <mat-icon> add_photo_alternate </mat-icon>
   </button>
 </div>

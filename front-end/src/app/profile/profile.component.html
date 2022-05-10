@@ -5,14 +5,30 @@
       <ng-template matStepContent>
         <p>I am a...</p>
         <mat-button-toggle-group formControlName="gender" [vertical]="true">
-          <mat-button-toggle value="{{genderList.woman}}">Woman</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.man}}">Man</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.agender}}">Agender</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.androgynous}}">Androgynous</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.bigender}}">Bigender</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.cisman}}">Cis Man</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.ciswoman}}">Cis Woman</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.genderfluid}}">Genderfluid</mat-button-toggle>
+          <mat-button-toggle value="{{ genderList.woman }}"
+            >Woman</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.man }}"
+            >Man</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.agender }}"
+            >Agender</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.androgynous }}"
+            >Androgynous</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.bigender }}"
+            >Bigender</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.cisman }}"
+            >Cis Man</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.ciswoman }}"
+            >Cis Woman</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.genderfluid }}"
+            >Genderfluid</mat-button-toggle
+          >
         </mat-button-toggle-group>
       </ng-template>
     </form>
@@ -22,15 +38,34 @@
       <ng-template matStepLabel>Step 2</ng-template>
       <ng-template matStepContent>
         <p>I want to date...</p>
-        <mat-button-toggle-group formControlName="sexualOrientation" [vertical]="true">
-          <mat-button-toggle value="{{genderList.woman}}">Woman</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.man}}">Man</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.agender}}">Agender</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.androgynous}}">Androgynous</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.bigender}}">Bigender</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.cisman}}">Cis Man</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.ciswoman}}">Cis Woman</mat-button-toggle>
-          <mat-button-toggle value="{{genderList.genderfluid}}">Genderfluid</mat-button-toggle>
+        <mat-button-toggle-group
+          formControlName="sexualOrientation"
+          [vertical]="true"
+        >
+          <mat-button-toggle value="{{ genderList.woman }}"
+            >Woman</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.man }}"
+            >Man</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.agender }}"
+            >Agender</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.androgynous }}"
+            >Androgynous</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.bigender }}"
+            >Bigender</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.cisman }}"
+            >Cis Man</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.ciswoman }}"
+            >Cis Woman</mat-button-toggle
+          >
+          <mat-button-toggle value="{{ genderList.genderfluid }}"
+            >Genderfluid</mat-button-toggle
+          >
         </mat-button-toggle-group>
       </ng-template>
     </form>
@@ -54,8 +89,11 @@
         <p>List of interests?</p>
         <mat-form-field appearance="fill">
           <mat-chip-list #chipList>
-            <mat-chip *ngFor="let interest of interests" (removed)="onRemove(interest)">
-              {{interest.name}}
+            <mat-chip
+              *ngFor="let interest of interests"
+              (removed)="onRemove(interest)"
+            >
+              {{ interest.name }}
               <button matChipRemove>
                 <mat-icon>cancel</mat-icon>
               </button>
@@ -64,33 +102,24 @@
               placeholder="More..."
               [matChipInputFor]="chipList"
               (matChipInputTokenEnd)="onAdd($event)"
-            >
+            />
           </mat-chip-list>
         </mat-form-field>
       </ng-template>
     </form>
   </mat-step>
 
-
-
-  <mat-step>
-    
-  </mat-step>
-
-
+  <mat-step> </mat-step>
 
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     <ng-template matStepContent>
       <p>You are now done.</p>
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="onSubmit()"
-      >Submit</button>
+      <button mat-raised-button color="primary" (click)="onSubmit()">
+        Submit
+      </button>
     </ng-template>
   </mat-step>
-
 </mat-stepper>
 <div class="buttons-container">
   <button
@@ -98,11 +127,15 @@
     [disabled]="stepper.selectedIndex === 0"
     color="accent"
     (click)="goBack(stepper)"
-  >Back</button>
+  >
+    Back
+  </button>
   <button
     mat-raised-button
     [disabled]="stepper.selectedIndex === 4"
     color="primary"
     (click)="goForward(stepper)"
-  >Next</button>
+  >
+    Next
+  </button>
 </div>

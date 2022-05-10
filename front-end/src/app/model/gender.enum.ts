@@ -6,5 +6,5 @@ export enum GenderList {
   bigender,
   cisman,
   ciswoman,
-  genderfluid
+  genderfluid,
 }
