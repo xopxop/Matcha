@@ -1,0 +1,30 @@
+<div
+  *ngFor="let image of images"
+  class="display-inline card-size card-styling"
+>
+  <div>
+    <img class="image-fit" src="{{image.content}}">
+  </div>
+</div>
+
+<div class="display-inline card-size card-styling">
+  <input
+    #imageInput
+    #file
+    type="file"
+    accept="image/*"
+    class="image-input"
+    multiple
+    (change)="addImage($event)"
+  >
+  <button
+    mat-button
+    class="size-to-parent icon-color"
+    matTooltip="Add"
+    (click)="imageInput.click()"
+  >
+    <mat-icon>
+      add_photo_alternate
+    </mat-icon>
+  </button>
+</div>

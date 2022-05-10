@@ -2,6 +2,7 @@ import { Component, ViewChild } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MatChipInputEvent } from "@angular/material/chips";
 import { MatStepper } from "@angular/material/stepper";
+import { GenderList } from '../model/gender.enum';
 
 @Component({
   selector: 'app-profile',
@@ -10,6 +11,8 @@ import { MatStepper } from "@angular/material/stepper";
 })
 export class ProfileComponent {
   @ViewChild('stepper') stepper: any;
+
+  genderList = GenderList;
 
   get currentStep(): number | null {
     if (this.stepper) {
@@ -32,24 +35,8 @@ export class ProfileComponent {
 
   onSubmit(): void {
     console.log(this.userProfileForm);
+    // console.log(this.genderList);
   }
-
-
-  firstFormGroup: FormGroup = new FormGroup({
-    gender: new FormControl()
-  });
-
-  secondFormGroup: FormGroup = new FormGroup({
-    sexualOrientation: new FormControl()
-  });
-
-  thirdFormGroup: FormGroup = new FormGroup({
-    biography: new FormControl()
-  });
-
-  forthFormGroup: FormGroup = new FormGroup({
-    interest: new FormControl()
-  });
 
   interests = [
     { name: 'cat' }, { name: 'dog' }, { name: 'fish' }

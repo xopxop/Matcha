@@ -1,42 +1,42 @@
 <mat-stepper #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
+  <mat-step [stepControl]="userProfileForm">
+    <form [formGroup]="userProfileForm">
       <ng-template matStepLabel>Step 1</ng-template>
       <ng-template matStepContent>
         <p>I am a...</p>
         <mat-button-toggle-group formControlName="gender" [vertical]="true">
-          <mat-button-toggle value="1">Woman</mat-button-toggle>
-          <mat-button-toggle value="2">Man</mat-button-toggle>
-          <mat-button-toggle value="3">Agender</mat-button-toggle>
-          <mat-button-toggle value="4">Androgynous</mat-button-toggle>
-          <mat-button-toggle value="5">Bigender</mat-button-toggle>
-          <mat-button-toggle value="6">Cis Man</mat-button-toggle>
-          <mat-button-toggle value="7">Cis Woman</mat-button-toggle>
-          <mat-button-toggle value="8">Genderfluid</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.woman}}">Woman</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.man}}">Man</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.agender}}">Agender</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.androgynous}}">Androgynous</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.bigender}}">Bigender</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.cisman}}">Cis Man</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.ciswoman}}">Cis Woman</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.genderfluid}}">Genderfluid</mat-button-toggle>
         </mat-button-toggle-group>
       </ng-template>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+  <mat-step [stepControl]="userProfileForm">
+    <form [formGroup]="userProfileForm">
       <ng-template matStepLabel>Step 2</ng-template>
       <ng-template matStepContent>
         <p>I want to date...</p>
         <mat-button-toggle-group formControlName="sexualOrientation" [vertical]="true">
-          <mat-button-toggle value="1">Woman</mat-button-toggle>
-          <mat-button-toggle value="2">Man</mat-button-toggle>
-          <mat-button-toggle value="3">Agender</mat-button-toggle>
-          <mat-button-toggle value="4">Androgynous</mat-button-toggle>
-          <mat-button-toggle value="5">Bigender</mat-button-toggle>
-          <mat-button-toggle value="6">Cis Man</mat-button-toggle>
-          <mat-button-toggle value="7">Cis Woman</mat-button-toggle>
-          <mat-button-toggle value="8">Genderfluid</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.woman}}">Woman</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.man}}">Man</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.agender}}">Agender</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.androgynous}}">Androgynous</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.bigender}}">Bigender</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.cisman}}">Cis Man</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.ciswoman}}">Cis Woman</mat-button-toggle>
+          <mat-button-toggle value="{{genderList.genderfluid}}">Genderfluid</mat-button-toggle>
         </mat-button-toggle-group>
       </ng-template>
     </form>
   </mat-step>
-  <mat-step [stepControl]="thirdFormGroup">
-    <form [formGroup]="thirdFormGroup">
+  <mat-step [stepControl]="userProfileForm">
+    <form [formGroup]="userProfileForm">
       <ng-template matStepLabel>Step 3</ng-template>
       <ng-template matStepContent>
         <p>Tell us about yourself?</p>
@@ -47,8 +47,8 @@
       </ng-template>
     </form>
   </mat-step>
-  <mat-step [stepControl]="forthFormGroup">
-    <form [formGroup]="forthFormGroup">
+  <mat-step [stepControl]="userProfileForm">
+    <form [formGroup]="userProfileForm">
       <ng-template matStepLabel>Step 4</ng-template>
       <ng-template matStepContent>
         <p>List of interests?</p>
@@ -70,11 +70,24 @@
       </ng-template>
     </form>
   </mat-step>
+
+
+
+  <mat-step>
+    
+  </mat-step>
+
+
+
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     <ng-template matStepContent>
       <p>You are now done.</p>
-      <button mat-raised-button color="primary">Submit</button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onSubmit()"
+      >Submit</button>
     </ng-template>
   </mat-step>
 

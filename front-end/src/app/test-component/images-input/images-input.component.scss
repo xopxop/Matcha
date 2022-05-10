@@ -1,0 +1,39 @@
+@use '@angular/material' as mat;
+
+.display-inline {
+  display: inline-block;
+  margin: 5px;
+  vertical-align: bottom;
+}
+
+.card-size {
+  height: 150px;
+  width: 140px;
+}
+
+.card-styling {
+  overflow: hidden;
+  border-radius: 3px;
+  @include mat.elevation-transition;
+  @include mat.elevation(2);
+}
+
+.size-to-parent {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-color {
+  opacity: 0.7;
+}
+
+.image-input {
+  display: none;
+}
+
+.image-fit {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
