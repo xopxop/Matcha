@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatStepper } from '@angular/material/stepper';
 import { GenderList } from '../model/gender.enum';
@@ -28,7 +28,11 @@ export class ProfileComponent {
     gender: new FormControl(),
     sexualOrientation: new FormControl(),
     biography: new FormControl(),
-    listOfInterest: new FormControl(),
+    listOfInterest: new FormControl([
+      { name: 'cat' },
+      { name: 'dog' },
+      { name: 'fish' }
+    ]),
     picture: new FormControl(),
   });
 
@@ -40,10 +44,9 @@ export class ProfileComponent {
   interests = [{ name: 'cat' }, { name: 'dog' }, { name: 'fish' }];
 
   onRemove(item: any): void {
-    const index = this.interests.indexOf(item);
-
+    const index = this.listOfInterestFormControl.value.indexOf(item);
     if (index >= 0) {
-      this.interests.splice(index, 1);
+      this.listOfInterestFormControl.value.splice(index, 1);
     }
   }
 
@@ -51,17 +54,12 @@ export class ProfileComponent {
     const value = (event.value || '').trim();
 
     if (value) {
-      this.interests.push({ name: value });
+      this.listOfInterestFormControl.value.push({ name: value });
     }
-
     event.chipInput!.clear();
   }
 
-  goBack(stepper: MatStepper): void {
-    stepper.previous();
-  }
-
-  goForward(stepper: MatStepper): void {
-    stepper.next();
+  get listOfInterestFormControl(): AbstractControl {
+    return this.userProfileForm.get('listOfInterest')!;
   }
 }

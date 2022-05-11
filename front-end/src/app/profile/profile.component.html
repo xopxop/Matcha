@@ -88,9 +88,9 @@
       <ng-template matStepContent>
         <p>List of interests?</p>
         <mat-form-field appearance="fill">
-          <mat-chip-list #chipList>
+          <mat-chip-list #chipList formControlName="listOfInterest">
             <mat-chip
-              *ngFor="let interest of interests"
+              *ngFor="let interest of userProfileForm.get('listOfInterest')!.value"
               (removed)="onRemove(interest)"
             >
               {{ interest.name }}
@@ -109,8 +109,8 @@
     </form>
   </mat-step>
 
-  <mat-step>
-    <form>
+  <mat-step [stepControl]="userProfileForm">
+    <form [formGroup]="userProfileForm">
       <ng-template matStepLabel>Step 5</ng-template>
       <ng-template matStepContent>
         <p>Pictures</p>
@@ -134,15 +134,15 @@
     mat-raised-button
     [disabled]="stepper.selectedIndex === 0"
     color="accent"
-    (click)="goBack(stepper)"
+    (click)="stepper.previous()"
   >
     Back
   </button>
   <button
     mat-raised-button
-    [disabled]="stepper.selectedIndex === 4"
+    [disabled]="stepper.selectedIndex === 5"
     color="primary"
-    (click)="goForward(stepper)"
+    (click)="stepper.next()"
   >
     Next
   </button>
