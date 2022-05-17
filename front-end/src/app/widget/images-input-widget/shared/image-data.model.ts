@@ -3,6 +3,7 @@ export interface ImageDataInterface {
   content: string;
 }
 
+// Need to to rename this since there is a class named ImageData
 export class ImageData implements ImageDataInterface {
   public name!: string;
   public content!: string;

@@ -9,7 +9,8 @@ import { ImageData } from '../shared/image-data.model';
 })
 export class ImagesInputComponent {
   @Input() readonly: boolean = false;
-  @Output() valueChange = new EventEmitter<Array<ImageData>>();
+  @Output() imageAdded = new EventEmitter<ImageData>();
+  @Output() imageRemoved = new EventEmitter<number>();
 
   images = new Array<ImageData>();
 
@@ -26,9 +27,10 @@ export class ImagesInputComponent {
       reader.addEventListener(
         'load',
         () => {
-          const src = reader.result;
-          this.images.push(new ImageData(src as string, file!.name!));
-          this.valueChange.emit();
+          const src = reader.result as string;
+          const image = new ImageData(src, file!.name!);
+          this.images.push(image);
+          this.imageAdded.emit(image);
         },
         false
       );
@@ -42,7 +44,7 @@ export class ImagesInputComponent {
   removeImage(index: number): void {
     if (index) {
       this.images.splice(index, 1);
-      this.valueChange.emit();
+      this.imageRemoved.emit(index);
     }
   }
 

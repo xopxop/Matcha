@@ -114,7 +114,10 @@
       <ng-template matStepLabel>Step 5</ng-template>
       <ng-template matStepContent>
         <p>Pictures</p>
-        <images-input></images-input>
+        <images-input
+          (imageAdded)="onImageAdded($event)"
+          (imageRemoved)="onImageRemoved($event)"
+        ></images-input>
       </ng-template>
     </form>
   </mat-step>

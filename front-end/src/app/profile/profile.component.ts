@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { MatStepper } from '@angular/material/stepper';
 import { GenderList } from '../model/gender.enum';
+import { ImageData } from '../widget/images-input-widget/shared/image-data.model';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +16,6 @@ export class ProfileComponent {
 
   get currentStep(): number | null {
     if (this.stepper) {
-      console.log(this.stepper.selectedIndex);
       return this.stepper.selectedIndex;
     }
     return null;
@@ -33,15 +32,13 @@ export class ProfileComponent {
       { name: 'dog' },
       { name: 'fish' }
     ]),
-    picture: new FormControl([]),
+    pictures: new FormControl([] as Array<ImageData>),
   });
 
   onSubmit(): void {
     console.log(this.userProfileForm);
     // console.log(this.genderList);
   }
-
-  interests = [{ name: 'cat' }, { name: 'dog' }, { name: 'fish' }];
 
   onRemove(item: any): void {
     const index = this.listOfInterestFormControl.value.indexOf(item);
@@ -63,6 +60,15 @@ export class ProfileComponent {
     return this.userProfileForm.get('listOfInterest')!;
   }
 
+  onImageAdded(image: ImageData) {
+    this.listOfUploadedImagesFormControl.value.push(image);
+  }
 
-  
+  onImageRemoved(index: number) {
+    this.listOfUploadedImagesFormControl.value.splice(index, 1);
+  }
+
+  get listOfUploadedImagesFormControl(): AbstractControl {
+    return this.userProfileForm.get('pictures')!;
+  }
 }
