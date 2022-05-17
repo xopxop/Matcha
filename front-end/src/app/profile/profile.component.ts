@@ -33,7 +33,7 @@ export class ProfileComponent {
       { name: 'dog' },
       { name: 'fish' }
     ]),
-    picture: new FormControl(),
+    picture: new FormControl([]),
   });
 
   onSubmit(): void {
@@ -62,4 +62,7 @@ export class ProfileComponent {
   get listOfInterestFormControl(): AbstractControl {
     return this.userProfileForm.get('listOfInterest')!;
   }
+
+
+  
 }

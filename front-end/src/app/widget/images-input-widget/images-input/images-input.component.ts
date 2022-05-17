@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ImageData } from '../shared/image-data.model';
 
 @Component({
   selector: 'images-input',
@@ -7,9 +9,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ImagesInputComponent {
   @Input() readonly: boolean = false;
-  @Output() valueChange = new EventEmitter<Array<Image>>();
+  @Output() valueChange = new EventEmitter<Array<ImageData>>();
 
-  images = new Array<Image>();
+  images = new Array<ImageData>();
+
+  constructor(
+    private readonly dialog: MatDialog
+  ) {}
 
   addImage(event: Event): void {
     const fileList: FileList = (event.target as any).files;
@@ -21,7 +27,8 @@ export class ImagesInputComponent {
         'load',
         () => {
           const src = reader.result;
-          this.images.push(new Image(src as string, file?.name!));
+          this.images.push(new ImageData(src as string, file!.name!));
+          this.valueChange.emit();
         },
         false
       );
@@ -31,8 +38,15 @@ export class ImagesInputComponent {
       }
     }
   }
-}
 
-class Image {
-  constructor(public content: string, public name: string) {}
+  removeImage(index: number): void {
+    if (index) {
+      this.images.splice(index, 1);
+      this.valueChange.emit();
+    }
+  }
+
+  previewImage(index: number): void {
+    this.dialog;
+  }
 }
