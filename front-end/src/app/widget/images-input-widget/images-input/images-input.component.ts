@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ImagePreviewDialogComponent } from '../image-preview-dialog/image-preview-dialog.component';
 import { ImageData } from '../shared/image-data.model';
+import { ImagesDialogData } from '../shared/images-dialog-data.model';
 
 @Component({
   selector: 'images-input',
@@ -49,6 +51,11 @@ export class ImagesInputComponent {
   }
 
   previewImage(index: number): void {
-    this.dialog;
+    this.dialog.open(ImagePreviewDialogComponent, {
+      data: {
+        images: this.images,
+        activeIndex: index
+      } as ImagesDialogData
+    })
   }
 }
