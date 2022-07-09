@@ -1,0 +1,21 @@
+<mat-form-field class="mat-form-field" floatLabel="never" #formField>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [(ngModel)]="value"
+    (dateInput)="dateInput($event)"
+    (dateChange)="dateChange($event)"
+  />
+  <span matSuffix>
+    <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+  </span>
+</mat-form-field>
+<mat-datepicker #picker></mat-datepicker>
+<button (click)="showMe()">Show Me</button>
+<button (click)="changeTo()">change</button>
+<div>
+  {{ dateValue | date : 'short' : 'UTC'}}
+</div>
+<div>
+  ISO String: {{isoString}}
+</div>

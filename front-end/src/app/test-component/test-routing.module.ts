@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TestComponent } from './test.component';
 
-const imagesInputModule = () =>
-  import('../widget/images-input-widget/images-input.module').then((m) => m.ImagesInputModule);
+const datePickerModule = () =>
+  import('./date-picker/date-picker.module').then((m) => m.MatChaDatePicker);
 
 const routes: Routes = [
   {
     path: '',
     component: TestComponent,
-    children: [{ path: 'image', loadChildren: imagesInputModule }],
+    children: [{ path: 'date-picker', loadChildren: datePickerModule }],
   },
 ];
 
