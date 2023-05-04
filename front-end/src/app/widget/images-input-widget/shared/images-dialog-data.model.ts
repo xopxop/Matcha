@@ -1,4 +1,4 @@
-import { ImageData } from "./image-data.model";
+import { ImageData } from './image-data.model';
 
 export interface ImagesDialogDataInterface {
   images: Array<ImageData>;

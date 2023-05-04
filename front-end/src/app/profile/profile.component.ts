@@ -30,7 +30,7 @@ export class ProfileComponent {
     listOfInterest: new FormControl([
       { name: 'cat' },
       { name: 'dog' },
-      { name: 'fish' }
+      { name: 'fish' },
     ]),
     pictures: new FormControl([] as Array<ImageData>),
   });

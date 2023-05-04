@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const accountModule = () =>
-  import('./account/account.module').then((m) => m.AccountModule);
-const profileModule = () =>
-  import('./profile/profile.module').then((m) => m.ProfileModule);
-const testModule = () =>
-  import('./test-component/test.module').then((m) => m.TestModule);
+// const authenticationModule = () =>
+//   import('./authentication-temp/authentication.module').then(
+//     (m) => m.AuthenticationModule
+//   );
+// const profileModule = () =>
+//   import('./profile/profile.module').then((m) => m.ProfileModule);
+// const testModule = () =>
+//   import('./test-component/test.module').then((m) => m.TestModule);
+
+const homePageModule = () => import('./routed-pages/home-page/home-page.module').then((m) => m.HomePageModule)
+const appPageModule = () => import('./routed-pages/app-page/app-page.module').then((m) => m.AppPageModule);
+const errorPageModule = () => import('./routed-pages/error-page/error-page.module').then((m) => m.ErrorPageModule);
+
 const routes: Routes = [
-  { path: 'account', loadChildren: accountModule },
-  { path: 'profile', loadChildren: profileModule },
-  { path: 'testModule', loadChildren: testModule },
+  { path: '', loadChildren: homePageModule },
+  { path: 'error', loadChildren: errorPageModule },
+  { path: 'app', loadChildren: appPageModule },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
+  // { path: 'testModule', loadChildren: testModule },
 ];
 
 @NgModule({

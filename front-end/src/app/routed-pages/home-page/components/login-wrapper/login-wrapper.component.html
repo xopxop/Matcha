@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-title>Matcha</mat-card-title>
+  <matcha-login-form></matcha-login-form>
+  <mat-card-actions>
+    <matcha-login-button
+      [logoUrl]="'https://raw.githubusercontent.com/fireflysemantics/logo/master/Google.svg'"
+      [text]="'Log in with Google'"
+      (click)="LogInWithGoogleButtonClicked()"
+    ></matcha-login-button>
+  </mat-card-actions>
+</mat-card>
+<div *ngIf="isLoggedIn">
+  <button  (click)="logout()">Sign out</button>
+</div>

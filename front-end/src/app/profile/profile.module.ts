@@ -29,7 +29,7 @@ import { ImagesInputModule } from '../widget/images-input-widget/images-input.mo
     MatIconModule,
     ProfileRoutingModule,
     MatButtonToggleModule,
-    ImagesInputModule
+    ImagesInputModule,
   ],
 })
 export class ProfileModule {}

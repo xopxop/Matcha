@@ -1,4 +1,7 @@
-<div *ngFor="let image of images; let i = index" class="display-inline card-size card-styling">
+<div
+  *ngFor="let image of images; let i = index"
+  class="display-inline card-size card-styling"
+>
   <div (click)="previewImage(i)">
     <img class="image-fit" src="{{ image.content }}" />
   </div>

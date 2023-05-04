@@ -1,0 +1,10 @@
+<div class="container">
+  <button class="wrapper" (click)="onClick()">
+    <span style="left: 16px; position: absolute;">
+      <span *ngIf="logoUrl">
+        <img class="logo" src="{{logoUrl}}">
+      </span>
+    </span>
+    <span class="text">{{text}}</span>
+  </button>
+</div>

@@ -5,7 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtInterceptor } from './interceptor/jwt.interceptor';
+// import { LoginModule } from './authentication-temp2/login/login.module';
+import { JwksValidationHandler, ValidationHandler } from 'angular-oauth2-oidc';
+// import { JwtInterceptor } from './interceptor/jwt.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,10 +15,12 @@ import { JwtInterceptor } from './interceptor/jwt.interceptor';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    // LoginModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: ValidationHandler, useClass: JwksValidationHandler }
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

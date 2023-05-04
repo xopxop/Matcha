@@ -16,9 +16,7 @@ export class ImagesInputComponent {
 
   images = new Array<ImageData>();
 
-  constructor(
-    private readonly dialog: MatDialog
-  ) {}
+  constructor(private readonly dialog: MatDialog) {}
 
   addImage(event: Event): void {
     const fileList: FileList = (event.target as any).files;
@@ -54,8 +52,8 @@ export class ImagesInputComponent {
     this.dialog.open(ImagePreviewDialogComponent, {
       data: {
         images: this.images,
-        activeIndex: index
-      } as ImagesDialogData
-    })
+        activeIndex: index,
+      } as ImagesDialogData,
+    });
   }
 }

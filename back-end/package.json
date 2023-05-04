@@ -1,20 +1,25 @@
 {
   "name": "back-end",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "start": "nodemon --exec babel-node index.js"
   },
-  "author": "Du Than",
-  "license": "MIT",
+  "author": "dthan",
+  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.0",
-    "express": "^4.17.3",
-    "mongoose": "^6.2.3",
-    "nodemon": "^2.0.15"
+    "express": "^4.18.2",
+    "mongodb": "^5.3.0",
+    "mongoose": "^7.0.5",
+    "nodemon": "^2.0.22",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.21.4"
   }
 }
