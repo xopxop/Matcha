@@ -24,6 +24,9 @@ export class UserController {
 
   #register(req, res) {
     // register account
+    const newUser = new User(req.body);
+    newUser.save().then();
+    res.send();
   }
 
   #update(req, res) {
